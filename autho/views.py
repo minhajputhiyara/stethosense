@@ -8,6 +8,12 @@ from django.contrib.auth.decorators import login_required
 from .decorators import *
 from .models import *
 from django import forms
+from django. contrib import messages
+
+
+
+def home(request):
+    return render(request, 'base.html')
 
 @csrf_exempt
 def loginPage(request):
@@ -20,7 +26,7 @@ def loginPage(request):
 
         if user is not None:
             login(request, user)
-            return redirect('myaccount')
+            return redirect('base.html')
         else:
             messages.info(request, 'Password or Username is incorrect')
             return render(request, 'login.html')
