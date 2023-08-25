@@ -1,0 +1,88 @@
+{% load static %}
+
+<head>
+    <!-- Bootstrap Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Stylesheet (style.css) -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <section class="h-100">
+        <div class="container h-100">
+            <div class="row justify-content-center h-100">
+                <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+                    <div class="text-center my-2">
+                        <img src="{% static 'img/logo.png' %}" alt="logo" width="100" height="100" class="my-logo">
+                    </div>
+
+                    <div class="card-footer py-3 border-0">
+                        <div class="text-center">
+                            Already have an account? <a href="{% url 'login' %}" class="text-light text-decoration-underline">Login</a>
+                        </div>
+                    </div>
+
+                    <div class="card shadow-lg">
+                        <div class="card-body p-5">
+                            <h1 class="fs-4 card-title fw-bold mb-4 text-dark">Signup</h1>
+
+                            <form method="POST" class="needs-validation" novalidate autocomplete="off">
+                                {% csrf_token %}
+
+                                <div class="mb-3">
+                                    <label class="mb-2 text-muted" for="name">First Name</label>
+                                    {{ form.first_name }}
+                                    <label class="mb-2 text-muted" for="name">Last Name</label>
+                                    {{ form.last_name }}
+                                    <div class="invalid-feedback">
+                                        Name is required
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="mb-2 text-muted" for="email">E-Mail Address</label>
+                                    {{ form.email }}
+                                    <div class="invalid-feedback">
+                                        Email is invalid
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="mb-2 text-muted" for="mobile">Phone number</label>
+                                    {{ form.mobile }}
+                                    <div class="invalid-feedback">
+                                        Mobile number is invalid
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="mb-2 text-muted" for="password1">Password</label>
+                                    {{ form.password1 }}
+                                    <label class="mb-2 text-muted" for="password2">Confirm Password</label>
+                                    {{ form.password2 }}
+                                    <div class="invalid-feedback">
+                                        Password is required
+                                    </div>
+                                </div>
+
+                                <p class="form-text text-muted mb-3">
+                                    By registering, you agree with our <a href="#" class="terms-link">terms and conditions</a>.
+                                </p>
+
+                                <div class="d-flex justify-content-center">
+                                    <input type="submit" value="Register" class="btn btn-primary custom-button">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="text-center mt-5 text-muted">
+                        Copyright &copy; 2022-2023 &mdash;
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JavaScript (you might need to adjust the path) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
